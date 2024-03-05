@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let kendaraan = {
+            kecepatan: 50,
+            kategori: "mobil",
+            jam: 8,
+            hari: "selasa",
+            owner: {
+                nik: "15244313132111",
+                nama: "Andika",
+            },
+            records: [],
+            bank: {
+                saldo: 500000
+            }
+        }
+
+        let operasiZebra = ['senin', 'selasa', 'rabu', 'kamis', 'jumat']
+        let rulesDenda = {
+            mobil: 200000,
+            motor: 120000
+        }
+
+        if (kendaraan.jam > 7 && kendaraan.jam < 16 && kendaraan.kecepatan > 25 && operasiZebra.includes(kendaraan.hari)) {
+            console.log("Kena tilang")
+            
+            let [mobil, motor] = Object.keys(rulesDenda);
+
+            if (kendaraan.kategori === mobil) {
+                kendaraan.bank.saldo = kendaraan.bank.saldo - rulesDenda.mobil
+                kendaraan.records.push({
+                    potongan: rulesDenda[mobil],
+                    sisaSaldo: kendaraan.bank.saldo
+                })
+            }
+
+        } else {
+            console.log("Aman");
+        }
+
+        console.log(kendaraan)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

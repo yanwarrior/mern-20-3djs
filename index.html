@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        const namaSupplier = "PT. Gondang Dia";
+        /**
+         * Hitung barang A
+         * */
+        let quantityBarangA = 2;
+        let priceBarangA = 10000;
+        let diskonBarangA = 10 / 100;
+        let hargaBarangAAfterDiskon = priceBarangA * diskonBarangA;
+        let subtotalBarangA = quantityBarangA * (priceBarangA - hargaBarangAAfterDiskon);
+
+        /**
+         * Hitung barang B
+         * */
+        let quantityBarangB = 4;
+        let priceBarangB = 25000;
+        let diskonBarangB = 0;
+        let hargaBarangBAfterDiskon = priceBarangB * diskonBarangB;
+        let subtotalBarangB = quantityBarangB * (priceBarangB - hargaBarangBAfterDiskon);
+        
+        let total = new Intl.NumberFormat(
+            'id-ID', 
+            { style: 'currency', currency: 'IDR' }
+        ).format(subtotalBarangA + subtotalBarangB);
+
+        let a = new Intl.NumberFormat(
+            'id-ID', 
+            { style: 'currency', currency: 'IDR' }
+        ).format(subtotalBarangA);
+
+        let b = new Intl.NumberFormat(
+            'id-ID', 
+            { style: 'currency', currency: 'IDR' }
+        ).format(subtotalBarangB);
+
+        console.log("Subtotal A = ", a);
+        console.log("Subtotal B = ", b);
+        console.log("Total = ", total);
+    </script>
+    <title>Document</title>
+
+</head>
+<body>
+    
+</body>
+</html>

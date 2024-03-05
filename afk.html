@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <h2>Game AFK Geeks (Rooms)</h2>
+    <p id="attacker">-</p>
+    <p id="defender">-</p>
+    <p id="remis"></p>
+
+    <script>
+        let txtAttacker = document.querySelector("#attacker");
+        let txtDefender = document.querySelector("#defender");
+        let txtRemis = document.querySelector("#remis")
+        function getRandomHero(max) {
+            return Math.floor(Math.random() * max);
+        }
+
+        let objHero = {
+            name: "",
+            blood: 100,
+            category: "Mage",
+            damage: 0,
+            skill: [
+                {
+                    name: "A",
+                    damage: 10,
+                },
+                {
+                    name: "B",
+                    damage: 20,
+                },
+                {
+                    name: "C",
+                    damage: 30,
+                },
+            ],
+            attack: function (enemy) {
+                let getSkillDamage = this.skill[getRandomHero(3)].damage
+                console.log(`Hero ${this.name} sedang nyerang ${enemy.name}`)
+                enemy.blood = enemy.blood - getSkillDamage;
+            },
+            liveStatus: function () {
+                console.log(`Hero ${this.name} memiliki darah ${this.blood}`)
+            }
+        }
+
+        let vexana = Object.assign({}, objHero);
+        vexana.name = "Vexana";
+        vexana.damage = 10;
+
+        let zilong = {...objHero}
+        zilong.name = "Zilong";
+        zilong.damage = 30;
+
+        let rooms = [vexana, zilong];
+
+        
+
+        let interval = setInterval(function () {
+            let indexHeroAttacker = getRandomHero(rooms.length)
+            let indexHeroDefender = getRandomHero(rooms.length);
+
+            if (indexHeroAttacker !== indexHeroDefender) {
+                let attacker = rooms[indexHeroAttacker];
+                let defender = rooms[indexHeroDefender]
+                attacker.attack(defender);
+                defender.liveStatus()
+                
+                txtRemis.innerHTML = "Game on"
+                txtAttacker.innerHTML = `Attacker: ${attacker.name} ${attacker.blood}% `;
+                txtDefender.innerHTML = `Defender: ${defender.name} ${defender.blood}% `;
+
+            } else {
+                txtRemis.innerHTML = "Game remis"
+            }
+            // if (bllood defender <= 0) {  stop permainan }
+            // clearInterval(interval)
+            
+        }, 2000)
+    </script>
+</body>
+</html>

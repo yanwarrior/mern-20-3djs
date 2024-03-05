@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <h3>Data Awal</h3>
+    <pre id="txtPopulation"></pre>
+    
+    <p>Kondisi</p>
+    <input type="number" id="txtCondition" />
+    <button id="btnFilter">Filter</button>
+
+    
+    <h3>Data Hasil Filter</h3>
+    <pre id="txtHasil"></pre>
+
+    <script>
+        let txtPopulation = document.querySelector("#txtPopulation");
+        let txtCondition = document.querySelector("#txtCondition");
+        let btnFilter = document.querySelector("#btnFilter");
+        let txtHasil = document.querySelector("#txtHasil");
+
+        let populations = [
+            {
+                wilayah: "kemanggisan",
+                jumlah: 1_000_000
+            },
+            {
+                wilayah: "kembangan",
+                jumlah: 900_000
+            },
+            {
+                wilayah: "kebon jeruk",
+                jumlah: 1_200_000
+            },
+            {
+                wilayah: "grogol",
+                jumlah: 1_100_000
+            }
+        ]
+
+        txtPopulation.innerHTML = JSON.stringify(populations, null, 2)
+
+        btnFilter.addEventListener("click", () => {
+            // tampung data filter yang kita input
+            let conditionNumber = parseInt(txtCondition.value);
+            let result = populations.filter((item) => item.jumlah <= conditionNumber);
+            txtHasil.innerHTML = JSON.stringify(result, null, 2);
+        })
+        
+
+    </script>
+</body>
+</html>

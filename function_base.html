@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function x(a, b=1) {
+            return a * b;
+        }
+
+        const y = (a, b) => a * b
+
+        const x1 = x;
+
+        const hitung = (a, b) => {
+            let hasil = a * b;
+            return hasil
+        }
+
+        console.log(y(19, 20))
+        console.log(hitung(10, 3))
+    </script>
+</head>
+<body>
+    <button>Hello</button>
+
+    <script>
+        let btn = document.querySelector("button");
+
+        btn.addEventListener("mouseleave", (event) => {
+            console.log(event.type);
+            console.log(event)
+        })
+    </script>
+</body>
+</html>

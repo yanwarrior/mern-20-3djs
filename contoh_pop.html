@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // akses object button
+        function a(e) {
+            console.log(e)
+        }
+    </script>
+</head>
+<body>
+    <p>Nama Tugas</p>
+    <input id="txtTugas" type="text" />
+    <button id="btnTambah" >Tambah</button>
+
+    <ul id="daftarTugas">
+    
+    </ul>
+
+    <script>
+        let task = []
+        
+        let txtTugas = document.querySelector("#txtTugas")
+        let btnTambah = document.querySelector("#btnTambah");
+        let daftarTugas = document.querySelector("#daftarTugas");
+       
+        setInterval(() => {
+            let lis = document.querySelectorAll("li");
+            for (let li of lis) {
+                li.addEventListener("click", (e) => {
+                    let index = task.indexOf(e.target.dataset.nama)
+                    if (index > -1) {
+                        task.splice(index, 1);
+                    }
+                    refresh()
+                })
+            }
+        }, 100)
+        
+
+
+        btnTambah.addEventListener("click", () => {
+            let nilaiTxtTugas = txtTugas.value;
+            task.push(nilaiTxtTugas);
+            refresh()
+        })
+
+        function refresh() {
+            daftarTugas.innerHTML = "";
+            task.map((value) => {
+                daftarTugas.innerHTML += `<li data-nama='${value}'>${value}</li>`
+            })
+        }
+
+        
+    </script>
+</body>
+</html>

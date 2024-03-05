@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.3.3/dist/aframe-environment-component.min.js"></script>
+    <script>
+        let x = 0.01;
+        let y = 0.01;
+        let z = 0.01;
+        let speed = 0;
+        AFRAME.registerComponent("foo", {
+            schema: {
+                elem: { type: "string" }
+            },
+            init: function () {
+                this.entity = document.querySelector(this.data.elem)
+                console.log("Foo sedang fase init.");
+                speed = 200
+            },
+            tick: function () {
+                console.log(this.data)
+                this.entity.setAttribute("rotation", `${x} ${y} ${z}`)
+                y+= speed;
+            },
+            update: function () {
+                console.log("test")
+            }
+        })
+    </script>
+    
+    
+</head>
+<body>
+    <a-scene environment="preset: goaland" hello-world>
+        <a-assets>
+            <!-- https://sketchfab.com/3d-models/zapdos-galarian-589a2cefe1e442228f62292b8cb18772 -->
+            <a-asset-item id="solgaleo" src="./assets/solgaleo/source/model.gltf"></a-asset-item>
+            <a-asset-item id="groudon" src="./assets/groudon/source/model.gltf"></a-asset-item>
+        </a-assets>
+       
+        <a-box 
+            position="2 0.5 -3" 
+            rotation="0 0 0" 
+            color="#4CC341"
+            opacity="0.5"
+            foo="elem: a-box;"
+        >
+            <a-entity position="0 0.6 0"  text="value: Hello World; width: 2.5; align: center;"></a-entity>
+        </a-box>
+
+        <a-entity
+            foo="elem: #entitas1;"
+            id="entitas1"
+            gltf-model="#solgaleo" 
+            animation-mixer="clip: solgaleo_attack1" 
+            scale="0.5 0.5 0.5" 
+            position="-1 0 -3"
+        ></a-entity>
+
+        <a-entity
+            id="entitas1"
+            gltf-model="#groudon" 
+            animation-mixer="clip: groudon_walk" 
+            scale="0.5 0.5 0.5" 
+            position="-1 0 -7"
+            rotation="0 180 0"
+        ></a-entity>
+
+    </a-scene>
+
+    
+    <script>
+        document.querySelector('a-box').setAttribute('foo', '');
+        document.querySelector('#entitas1').setAttribute('test', '456');
+    </script>
+</body>
+</html>

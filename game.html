@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let heroZilong = {
+            name: "Zilong",
+            blood: 100,
+            mana: 32,
+            category: "Assasin",
+            skin: {
+                id: 1,
+                name: "Anu",
+                damage: 10,
+            },
+            damage: 30,
+            items: [
+                {
+                    id: 23,
+                    name: "gold stuff",
+                    desc: "Lorem ipsum",
+                    value: 10,
+                },
+                {
+                    id: 12,
+                    name: "attack speed",
+                    desc: "Lorem ipsum",
+                    value: 10,
+                }
+            ],
+            attack: function (enemy) {
+                console.log(`Hero ${this.name} sedang nyerang`);
+                enemy.blood = enemy.blood - this.damage;
+            }
+        }
+
+        let heroVexana = {
+            name: "Vexana",
+            blood: 100,
+            mana: 32,
+            category: "Mage",
+            skin: {
+                id: 1,
+                name: "Anu",
+                damage: 10,
+            },
+            damage: 10,
+            items: [
+                {
+                    id: 23,
+                    name: "gold stuff",
+                    desc: "Lorem ipsum",
+                    value: 10,
+                },
+                {
+                    id: 12,
+                    name: "attack speed",
+                    desc: "Lorem ipsum",
+                    value: 10,
+                }
+            ],
+            attack: function (enemy) {
+                console.log(`Hero ${this.name} sedang nyerang`)
+            },
+            liveStatus: function () {
+                console.log(`Hero ${this.name} memiliki darah ${this.blood}`)
+            }
+        }
+
+        heroZilong.attack(heroVexana)
+        heroVexana.liveStatus()
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
