@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .btn {
+            padding: 16px 32px; 
+            border-radius: 8px;
+            border: none;
+            color: #ffffff;
+            font-weight: 700; /* ketebalan font */
+            font-size: 1em; /* ukuran font */
+        }
+
+        #increment {
+            background-color: #603395;
+        }
+
+        #decrement {
+            background-color: #2FABA9;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        #text {
+            font-size: 80px;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        #wrapper {
+            display: flex; /* untuk membuat layout berbasis flex (flexible) */
+            flex-direction: column; /* mengubah arah align item flex menjadi column */
+            width: 20%;
+            font-family: Arial, Helvetica, sans-serif;
+            gap: 80px;
+            padding: 16px;
+            background-color: #CBD5E1;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="text">0</div>
+        <div id="container">
+            <button class="btn" id="increment">Increment</button>
+            <button class="btn" id="decrement">Decrement</button>
+        </div>
+    </div>
+
+    <script src="./script/belajarevent.js"></script>
+</body>
+</html>
